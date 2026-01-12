@@ -11,16 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(table: 'bookings', callback: function (Blueprint $table): void
+        Schema::create('bookings', function (Blueprint $table): void
         {
 
             $table->id("booking_id");
-            $table->integer("admin_id");
-            $table->integer("patient_id");
+            $table->unsignedBigInteger("admin_id");
+            $table->unsignedBigInteger("patient_id");
             $table->dateTime("time_slot_start");
             $table->dateTime("time_slot_end");
             $table->tinyInteger("status");
             $table->timestamps();
+
+            $table->foreign('admin_id')
+                ->references('admin_id')->on('admins')
+                ->onDelete('cascade');
+
+            $table->foreign('patient_id')
+                ->references('patient_id')->on('patients')
+                ->onDelete('cascade');
         }
         );
     }
@@ -30,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('bookings');
     }
 };
