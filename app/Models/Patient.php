@@ -14,6 +14,7 @@ class Patient extends Model
         'medical_history',
         'age',
         'sex',
+        'account',
         'password',
         'email',
         'location',

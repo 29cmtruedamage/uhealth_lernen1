@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("medical_history");
             $table->integer("age");
             $table->tinyInteger("sex");
+            $table->string("account");
             $table->string("password");
             $table->string("email");
             $table->string("location");
