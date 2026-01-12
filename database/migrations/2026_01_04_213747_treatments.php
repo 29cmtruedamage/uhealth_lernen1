@@ -28,9 +28,9 @@ return new class extends Migration
                 ->references('patient_id')->on('patients')
                 ->onDelete('cascade');
 
-            $table->foreign('treatment_id')
-                ->references('treatment_id')->on('treatments')
-                ->onDelete('cascade');
+            // $table->foreign('treatment_id')
+            //     ->references('treatment_id')->on('treatments')
+            //     ->onDelete('cascade');
         }
         );
     }
