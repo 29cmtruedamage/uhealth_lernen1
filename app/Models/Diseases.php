@@ -21,6 +21,6 @@ class Disease extends Model
 
     public function treatments()
     {
-        return $this->hasMany(Treatment::class, 'treatment_id', 'treatment_id');
+        return $this->hasMany(Treatment::class, 'disease_id', 'disease_id');
     }
 }
