@@ -11,21 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(table: 'patients', callback: function (Blueprint $table): void
+        Schema::create('patients', function (Blueprint $table): void
         {
 
             $table->id("patient_id");
-            $table->integer("admin_id");
             $table->string("name");
-            $table->string("medical_history");
             $table->integer("age");
             $table->tinyInteger("sex");
             $table->string("account");
             $table->string("password");
             $table->string("email");
             $table->string("location");
-
-
             $table->timestamps();
         }
         );
@@ -36,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('patients');
     }
 };

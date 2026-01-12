@@ -14,14 +14,23 @@ return new class extends Migration
         Schema::create(table: 'treatments', callback: function (Blueprint $table): void
         {
             $table->id("treatment_id");
-            $table->integer("patient_id");
-            $table->integer("admin_id");
+            $table->unsignedBigInteger("patient_id");
+            $table->unsignedBigInteger("admin_id");
             $table->text("diagnosis");
             $table->string("type_of_treatment");
-
-
-
             $table->timestamps();
+
+            $table->foreign('admin_id')
+                ->references('admin_id')->on('admins')
+                ->onDelete('cascade');
+
+            $table->foreign('patient_id')
+                ->references('patient_id')->on('patients')
+                ->onDelete('cascade');
+
+            $table->foreign('treatment_id')
+                ->references('treatment_id')->on('treatments')
+                ->onDelete('cascade');
         }
         );
     }
@@ -31,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('treatments');
     }
 };
