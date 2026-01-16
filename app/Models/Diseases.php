@@ -14,13 +14,8 @@ class Diseases extends Model
         'icd_code'
     ];
 
-    public function patients(){
-        return $this->belongsToMany(Patient::class, 'patients_diseases', 'disease_id', 'patient_id')
-            ->withPivot('diagnosis_date');
-    }
-
     public function treatments()
     {
-        return $this->hasMany(Treatment::class, 'disease_id', 'disease_id');
+        return $this->belongsToMany(Treatment::class, 'treatments_diseases','disease_id', 'treatment_id');
     }
 }

@@ -22,11 +22,6 @@ class Patient extends Model
         return $this->hasMany(Booking::class, 'patient_id', 'patient_id');
     }
 
-    public function diseases(){
-        return $this->belongsToMany(Disease::class, 'patients_diseases', 'patient_id', 'disease_id')
-            ->withPivot('diagnosis_date');
-    }
-
     public function treatments()
     {
         return $this->hasMany(Treatment::class, 'patient_id', 'patient_id');

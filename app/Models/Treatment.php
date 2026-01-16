@@ -29,11 +29,11 @@ class Treatment extends Model
 
     public function diseases()
     {
-        return $this->belongsTo(Disease::class, 'disease_id', 'disease_id');
+        return $this->belongsToMany(Disease::class, 'treatments_diseases', 'treatment_id', 'disease_id');
     }
 
     public function medications(){
-        return $this->belongsToMany(Medication::class, 'treatments_medications', 'treatments_id', 'medication_id')
+        return $this->belongsToMany(Medication::class, 'treatments_medications', 'treatment_id', 'medication_id')
             ->withPivot('dosis','amount');
     }
 }
