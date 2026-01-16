@@ -12,7 +12,7 @@ class Patient extends Model
         'name',
         'age',
         'sex',
-        'account',
+        'username',
         'password',
         'email',
         'location',

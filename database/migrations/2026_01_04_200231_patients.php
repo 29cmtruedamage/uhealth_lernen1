@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name");
             $table->integer("age");
             $table->tinyInteger("sex");
-            $table->string("account");
+            $table->string("username");
             $table->string("password");
             $table->string("email");
             $table->string("location");
