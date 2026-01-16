@@ -12,7 +12,7 @@ class Patient extends Model
         'name',
         'age',
         'sex',
-        'account',
+        'username',
         'password',
         'email',
         'location',
@@ -20,11 +20,6 @@ class Patient extends Model
 
     public function bookings(){
         return $this->hasMany(Booking::class, 'patient_id', 'patient_id');
-    }
-
-    public function diseases(){
-        return $this->belongsToMany(Disease::class, 'patients_diseases', 'patient_id', 'disease_id')
-            ->withPivot('diagnosis_date');
     }
 
     public function treatments()
